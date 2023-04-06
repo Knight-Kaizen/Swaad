@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title>Swaad</title>
+    <link rel="stylesheet" href="/stylesheets/homepage.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="nav-container
+            <% if(showRoutes == true) {%>
+                increase-height
+                <%}%>
+            ">
+            <div class="nav-logo">
+                <div class="logo">Swaad</div>
+                <form class="nav-routes" action="/home" method="post">
+                    <button class="route-button">
+                        <img class="hamburger" src="/Images/hamburger.png" alt="">
+                    </button>
+                </form>
+            </div>
+            <div class="nav-route-buttons 
+                <% if(showRoutes == true) {%>
+                    show-route-buttons
+                    <%}%>
+                    ">
+                <div class="home-route">
+                    <form action="/home" method="post" class="routes">
+                        <button class="route-button">Home</button>
+                    </form>
+                </div>
+                <div class="recipes-route">
+                    <form action="/recipes" method="post" class="routes">
+                        <button class="route-button">Recipes</button>
+                    </form>
+                </div>
+                <div class="about-route">
+                    <form action="/about" method="post" class="routes">
+                        <button class="route-button">About</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="main-body">
+            <div class="body-left"></div>
+            <div class="body-right">
+                <div class="body-text">
+                    orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                </div>
+                <div class="body-buttons">
+                    <form action="" class="explore-recipes">
+                        <button class="body-button">Explore Recipes</button>
+                    </form>
+                    <form action="" class="create-recipes">
+                        <button class="body-button">Add Recipes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

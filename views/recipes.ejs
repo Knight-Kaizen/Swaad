@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>Swaad</title>
+    <link rel="stylesheet" href="/stylesheets/recipes.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="nav-container
+            <% if(showRoutes == true) {%>
+                increase-height
+                <%}%>
+            ">
+            <div class="nav-logo">
+                <div class="logo">Swaad</div>
+                <form class="nav-routes" action="/recipes" method="post">
+                    <button class="route-button">
+                        <img class="hamburger" src="/Images/hamburger.png" alt="">
+                    </button>
+                </form>
+            </div>
+            <div class="nav-route-buttons 
+                <% if(showRoutes == true) {%>
+                    show-route-buttons
+                    <%}%>
+                    ">
+                <div class="home-route">
+                    <form action="/home" method="post" class="routes">
+                        <button class="route-button">Home</button>
+                    </form>
+                </div>
+                <div class="recipes-route">
+                    <form action="/recipes" method="post" class="routes">
+                        <button class="route-button">Recipes</button>
+                    </form>
+                </div>
+                <div class="about-route">
+                    <form action="/about" method="post" class="routes">
+                        <button class="route-button">About</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="main-body">
+            You are in recipes page
+        </div>
+    </div>
+</body>
+
+</html>

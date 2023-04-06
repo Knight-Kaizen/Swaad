@@ -1,0 +1,182 @@
+.nav-container {
+    height: 10vh;
+    width: 100vw;
+
+
+    display: flex;
+    flex-direction: column;
+}
+
+.increase-height {
+    height: 25vh;
+}
+
+.nav-logo {
+    height: 10vh;
+    width: 100%;
+
+    display: flex;
+}
+
+.logo {
+    height: 100%;
+    width: 80%;
+
+}
+
+.nav-routes {
+    height: 100%;
+    width: 20%;
+
+}
+
+.route-button {
+    height: 100%;
+    width: 100%;
+}
+
+.hamburger {
+    height: 100%;
+    width: 100%;
+}
+
+
+.nav-route-buttons {
+    visibility: hidden;
+    height: 15vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.show-route-buttons {
+    visibility: visible;
+}
+
+.home-route,
+.recipes-route,
+.about-route {
+    height: 5vh;
+    width: 100%;
+}
+
+.main-body {
+    height: 90vh;
+    width: 100vw;
+
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.body-left {
+    visibility: hidden;
+}
+
+.body-right {
+    height: 100%;
+    width: 100%;
+
+
+}
+
+.body-text {
+    height: 50%;
+    width: 100%;
+
+
+}
+
+.body-buttons {
+    height: 50%;
+    width: 100%;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.explore-recipes,
+.create-recipes {
+    height: 15%;
+    width: 50%;
+    margin: 3%;
+}
+
+.body-button {
+    height: 100%;
+    width: 100%;
+}
+
+@media only screen and (min-width: 660px) {
+    .nav-container {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .home-route,
+    .recipes-route,
+    .about-route {
+        height: 10vh;
+        width: 30%;
+
+    }
+
+    .routes {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .route-button {
+        height: 60%;
+
+    }
+
+    .nav-logo {
+        width: 50%;
+    }
+
+    .increase-height {
+        height: 10vh;
+    }
+
+    .nav-routes {
+        visibility: hidden;
+    }
+
+    .nav-route-buttons {
+        width: 50%;
+        height: 100%;
+        visibility: visible;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .main-body {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .body-left {
+        visibility: visible;
+        height: 100%;
+        width: 50%;
+
+    }
+
+    .body-right {
+        width: 50%;
+    }
+
+    .body-buttons {
+        flex-direction: row;
+        align-items: flex-start;
+        padding-top: 10%;
+    }
+}
