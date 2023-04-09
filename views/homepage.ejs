@@ -54,17 +54,36 @@
                     publishing software like Aldus PageMaker including versions of Lorem Ipsum
                 </div>
                 <div class="body-buttons">
-                    <form action="" class="explore-recipes">
+                    <form action="/recipes" method="post" class="explore-recipes">
                         <button class="body-button">Explore Recipes</button>
                     </form>
-                    <form action="" class="create-recipes">
+                    <form action="/home?showForm=true" method="post" class="create-recipes">
                         <button class="body-button">Add Recipes</button>
                     </form>
                 </div>
             </div>
         </div>
+        
     </div>
-
+    <div class="add-recipe-form
+    <% if(showForm == true) {%>
+        show-recipe-form
+        <%}%>
+    ">
+        <form action="/validateForm" method="post" class="recipeForm">
+            <label for="">Name</label>
+            <input type="text" name="recipeName" >
+            <label for="">Description</label>
+            <input type="text" name="description">
+            <label for="">Ingredients</label>
+            <input type="text" name="ingredients">
+            <label for="">Steps</label>
+            <textarea name="steps" ></textarea>
+            <button type="submit" >Create Recipe</button>
+            <button type="submit" formaction="/home?showForm=false" method="post">Close form</button>
+        </form>
+    </div>
+    
 </body>
 
 </html>

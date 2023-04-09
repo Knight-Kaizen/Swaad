@@ -1,29 +1,97 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-app.listen(8000);
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+const notifier = require('node-notifier');
+
+const url = "mongodb+srv://kaizen:78R5k1MNqv7FVeea@mydatabase.fkdphrh.mongodb.net/?retryWrites=true&w=majority";
+
+mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+    .then(() => console.log('mongo connected'))
+    .catch(err => console.log(err));
 
 app.set("view engine", "ejs");
 app.use(express.static('./public'));
 
+const recipeSchema = new mongoose.Schema({
+    name: String,
+    description: String,
+    ingredients: String,
+    steps: String
+})
+//Recipe is a class -> it tells what type of schema will be stored in this model.
+//Collection creation
+const Recipe = new mongoose.model("Recipe", recipeSchema);
+
+
 let showRouteButtons = false;
+let showRecipeForm = false;
 app.get('/', (req, res) => {
-    res.render('homepage', { showRoutes: showRouteButtons });
+    console.log('routing on home page');
+    res.render('homepage', { showRoutes: showRouteButtons, showForm: showRecipeForm });
 })
 
 app.get('/about', (req, res) => {
     res.render('about', { showRoutes: showRouteButtons });
 })
-
+const getrecipes = async()=>{
+    const result = await Recipe.find();
+    console.log(result);
+}
 app.get('/recipes', (req, res) => {
+    getrecipes();
     res.render('recipes', { showRoutes: showRouteButtons });
 })
+// let showError = false;
+const createNewRecipe= async (obj)=>{
+    try{
+        const newRecipe = new Recipe({
+            name: obj.recipeName,
+            description: obj.description,
+            ingredients: obj.ingredients,
+            steps: obj.steps
+        })
+        const result = await newRecipe.save();
+    }
+    catch(err){
+        console.log(err);
+    }  
+};
 
+app.post('/validateForm', (req, res) => {
+    if (req.body.recipeName == '' || req.body.description == '' ||
+        req.body.ingredients == '' || req.body.steps == '') {
+        notifier.notify('Fill all the feilds.');
+        res.render('homepage', { showError: true, showRoutes: showRouteButtons, showForm: true });
+    }
+    else {
+        showRecipeForm = false;
+        console.log(req.body);
+        //adding new recipe
+        createNewRecipe(req.body);
+        res.render('recipes', { showRoutes: showRouteButtons });
+    }
+})
 app.post('/home', (req, res) => {
+    console.log(req.query);
+    if (req.query.showForm == 'false')
+        showRecipeForm = false;
+    else if (req.query.showForm == 'true')
+        showRecipeForm = true;
     showRouteButtons = !showRouteButtons;
-    res.redirect('/');
+    console.log(req.body);
+    if (req.query.moveTo == 'recipes')
+        res.redirect('/recipes');
+    else
+        res.redirect('/');
 })
 app.post('/recipes', (req, res) => {
+
     showRouteButtons = !showRouteButtons;
     res.redirect('/recipes');
 })
@@ -31,3 +99,8 @@ app.post('/about', (req, res) => {
     showRouteButtons = !showRouteButtons;
     res.redirect('/about');
 })
+
+
+app.listen(8000, () => {
+    console.log('server started');
+});
