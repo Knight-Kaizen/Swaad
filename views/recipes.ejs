@@ -43,7 +43,47 @@
             </div>
         </div>
         <div class="main-body">
-            You are in recipes page
+            
+                <% for(let key of recipeObj){ %>
+                    <div class="recipeCard">
+                        <div class="recipe-image">
+                            Image => 
+                            <%= key._id %>
+                        </div>
+                        <div class="recipe-name">
+                            <%= key.name %>
+                        </div>
+                        <div class="recipe-description">
+                            <%= key.description %>
+                        </div>
+                        <div class="recipe-ingredients">
+                            <%= key.ingredients %>
+                        </div>
+                        <div class="recipe-steps">
+                            <%= key.steps %>
+                        </div>
+                        <form action="/<%=key._id%>/edit" method="post">
+
+                            <button class="modify">Modify</button>
+                            <button class="delete" type="submit" formaction="/<%=key._id%>/delete" method="post">Delete</button>
+                        </form>
+                    </div>
+               <% } %>
+           
+            
+            
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal-container">
+            <form action="/edit" method="post">
+                <label for="">Name</label>
+                <input type="text" name="name">
+                <label for="">ingredients</label>
+                <input type="text" name="ingredients">
+                <button>Modify</button>
+                <button type="submit" formaction="/recipes" method="post">Cancel</button>
+            </form>
         </div>
     </div>
 </body>
