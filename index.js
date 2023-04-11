@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
+const multer = require('multer');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 const notifier = require('node-notifier');
@@ -18,11 +19,26 @@ mongoose.connect(url, {
 app.set("view engine", "ejs");
 app.use(express.static('./public'));
 
+//------------image upload----------------
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/uploads')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname)
+    }
+})
+
+const upload = multer({ storage: storage })
+
+//-----------------------------------------
 const recipeSchema = new mongoose.Schema({
     name: String,
     description: String,
     ingredients: String,
-    steps: String
+    steps: String,
+    img:String
+
 })
 //Recipe is a class -> it tells what type of schema will be stored in this model.
 //Collection creation
@@ -40,7 +56,7 @@ app.get('/about', (req, res) => {
     res.render('about', { showRoutes: showRouteButtons });
 })
 
-  
+
 app.get('/recipes', async (req, res) => {
     try {
         const result = await Recipe.find();
@@ -53,13 +69,14 @@ app.get('/recipes', async (req, res) => {
 
 })
 // let showError = false;
-const createNewRecipe = async (obj) => {
+const createNewRecipe = async (obj, objFile) => {
     try {
         const newRecipe = new Recipe({
             name: obj.recipeName,
             description: obj.description,
             ingredients: obj.ingredients,
-            steps: obj.steps
+            steps: obj.steps,
+            img:objFile.filename
         })
         const result = await newRecipe.save();
     }
@@ -68,26 +85,27 @@ const createNewRecipe = async (obj) => {
     }
 };
 
-app.post('/validateForm', async (req, res) => {
-    try{
+app.post('/validateForm', upload.single('recipeImage'), async (req, res) => {
+    try {
         if (req.body.recipeName == '' || req.body.description == '' ||
-        req.body.ingredients == '' || req.body.steps == '') {
-        notifier.notify('Fill all the feilds.');
-        res.render('homepage', { showError: true, showRoutes: showRouteButtons, showForm: true });
+            req.body.ingredients == '' || req.body.steps == '') {
+            notifier.notify('Fill all the feilds.');
+            res.render('homepage', { showError: true, showRoutes: showRouteButtons, showForm: true });
+        }
+        else {
+            showRecipeForm = false;
+
+            console.log(req.body, req.file);
+            //adding new recipe
+            createNewRecipe(req.body, req.file);
+            const result = await Recipe.find();
+            res.render('recipes', { showRoutes: showRouteButtons, recipeObj: result });
+        }
     }
-    else {
-        showRecipeForm = false;
-        // console.log(req.body);
-        //adding new recipe
-        createNewRecipe(req.body);
-        const result = await Recipe.find();
-        res.render('recipes', { showRoutes: showRouteButtons,recipeObj: result  });
-    }
-    }
-    catch(err){
+    catch (err) {
         console.log('Error', err);
     }
-   
+
 })
 app.post('/home', (req, res) => {
     // console.log(req.query);
@@ -112,40 +130,40 @@ app.post('/about', (req, res) => {
     res.redirect('/about');
 })
 let editId = 0;
-app.post('/:id/edit', (req,res)=>{
+app.post('/:id/edit', (req, res) => {
     console.log('in eidt page');
     editId = req.params.id;
     res.redirect('/');
 })
-app.post('/edit', async (req, res)=>{
+app.post('/edit', async (req, res) => {
     //req.body and change info
-    try{
+    try {
         const updatedRecipe = req.body;
-    console.log('this is to be updated:', req.body);
-    console.log(editId);
-        const result = await Recipe.updateOne({_id:editId},{
-            $set : {
+        console.log('this is to be updated:', req.body);
+        console.log(editId);
+        const result = await Recipe.updateOne({ _id: editId }, {
+            $set: {
                 name: req.body.name,
                 ingredients: req.body.ingredients
             }
         });
         res.redirect('/recipes')
     }
-    catch(err){
+    catch (err) {
         console.log("Error", err);
     }
-    
-    
+
+
 })
-app.post('/:id/delete', async (req,res)=>{
-    try{
+app.post('/:id/delete', async (req, res) => {
+    try {
         const id = req.params.id;
         console.log('in delete', id);
-        const result = await Recipe.deleteOne({_id:id});
+        const result = await Recipe.deleteOne({ _id: id });
         res.redirect('/recipes');
 
     }
-    catch(err){
+    catch (err) {
         console.log('error', (err));
     }
 })

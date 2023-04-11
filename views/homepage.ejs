@@ -70,7 +70,7 @@
         show-recipe-form
         <%}%>
     ">
-        <form action="/validateForm" method="post" class="recipeForm">
+        <form action="/validateForm" method="post" class="recipeForm" enctype="multipart/form-data">
             <label for="">Name</label>
             <input type="text" name="recipeName" >
             <label for="">Description</label>
@@ -79,6 +79,9 @@
             <input type="text" name="ingredients">
             <label for="">Steps</label>
             <textarea name="steps" ></textarea>
+            <label for="">Upload Image</label>
+            <input type="file" accept="image/*" name="recipeImage">
+            <button class="ipload-image" type="submit" formaction="/uploadImage", method="post">Upload Image</button>
             <button type="submit" >Create Recipe</button>
             <button type="submit" formaction="/home?showForm=false" method="post">Close form</button>
         </form>
