@@ -37,7 +37,7 @@ const recipeSchema = new mongoose.Schema({
     description: String,
     ingredients: String,
     steps: String,
-    img:String
+    img: String
 
 })
 //Recipe is a class -> it tells what type of schema will be stored in this model.
@@ -56,12 +56,13 @@ app.get('/about', (req, res) => {
     res.render('about', { showRoutes: showRouteButtons });
 })
 
-
+let recipeEditModal = false;
 app.get('/recipes', async (req, res) => {
     try {
         const result = await Recipe.find();
         // console.log(result);
-        res.render('recipes', { showRoutes: showRouteButtons, recipeObj: result });
+        console.log(recipeEditModal);
+        res.render('recipes', { showRoutes: showRouteButtons, recipeObj: result, recipeEditModal: recipeEditModal });
     }
     catch (err) {
         console.log('there is some error', err);
@@ -76,7 +77,7 @@ const createNewRecipe = async (obj, objFile) => {
             description: obj.description,
             ingredients: obj.ingredients,
             steps: obj.steps,
-            img:objFile.filename
+            img: objFile.filename
         })
         const result = await newRecipe.save();
     }
@@ -99,7 +100,7 @@ app.post('/validateForm', upload.single('recipeImage'), async (req, res) => {
             //adding new recipe
             createNewRecipe(req.body, req.file);
             const result = await Recipe.find();
-            res.render('recipes', { showRoutes: showRouteButtons, recipeObj: result });
+            res.render('recipes', { showRoutes: showRouteButtons, recipeObj: result, recipeEditModal: recipeEditModal });
         }
     }
     catch (err) {
@@ -121,7 +122,7 @@ app.post('/home', (req, res) => {
         res.redirect('/');
 })
 app.post('/recipes', (req, res) => {
-
+    recipeEditModal = false;
     showRouteButtons = !showRouteButtons;
     res.redirect('/recipes');
 })
@@ -133,9 +134,10 @@ let editId = 0;
 app.post('/:id/edit', (req, res) => {
     console.log('in eidt page');
     editId = req.params.id;
-    res.redirect('/');
+    recipeEditModal = true;
+    res.redirect('/recipes');
 })
-app.post('/edit', async (req, res) => {
+app.post('/edit',async (req, res) => {
     //req.body and change info
     try {
         const updatedRecipe = req.body;
@@ -143,10 +145,13 @@ app.post('/edit', async (req, res) => {
         console.log(editId);
         const result = await Recipe.updateOne({ _id: editId }, {
             $set: {
-                name: req.body.name,
-                ingredients: req.body.ingredients
+                name: req.body.recipeName,
+                ingredients: req.body.ingredients,
+                description: req.body.description,
+                steps: req.body.steps
             }
         });
+        recipeEditModal = false;
         res.redirect('/recipes')
     }
     catch (err) {
@@ -160,8 +165,8 @@ app.post('/:id/delete', async (req, res) => {
         const id = req.params.id;
         console.log('in delete', id);
         const result = await Recipe.deleteOne({ _id: id });
-        res.redirect('/recipes');
 
+        res.redirect('/recipes');
     }
     catch (err) {
         console.log('error', (err));

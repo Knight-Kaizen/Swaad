@@ -1,14 +1,14 @@
 .main {
     height: auto;
     width: 100vw;
+    background-color: BFCCB5;
 
 }
-
 .nav-container {
     height: 10vh;
-    width: 100vw;
+    width: 95vw;
 
-
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
@@ -20,14 +20,20 @@
 .nav-logo {
     height: 10vh;
     width: 100%;
-
     display: flex;
 }
 
 .logo {
+    box-sizing: border-box;
     height: 100%;
     width: 80%;
-
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 2rem;
+    font-size: 2.4rem;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: 393646;
 }
 
 .nav-routes {
@@ -39,6 +45,12 @@
 .route-button {
     height: 100%;
     width: 100%;
+    background-color: BFCCB5;
+    border: none;
+    font-size: 1.2rem;
+}
+.route-button:hover{
+    font-size: 1.5rem;
 }
 
 .hamburger {
@@ -67,7 +79,82 @@
     width: 100%;
 }
 
+.main-body {
+    height: 90vh;
+    width: 100vw;
 
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.body-left {
+    visibility: hidden;
+    width: 50%;
+    height: 100%;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 10%;
+    object-fit: cover;
+}
+
+.body-right {
+    height: 100%;
+    width: 95%;
+
+
+}
+
+.body-text {
+    height: 70%;
+    width: 90%;
+    box-sizing: border-box;
+    padding: 2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.1rem;
+
+
+}
+
+.body-buttons {
+    height: 30%;
+    width: 96%;
+
+    box-sizing: border-box;
+    padding: 2rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.explore-recipes,
+.create-recipes {
+    height: 15%;
+    width: 50%;
+    margin: 3%;
+}
+
+.body-button {
+    height: 200%;
+    width: 100%;
+    border-radius: 2%;
+    background-color:#e4eae1;
+    border: none;
+    font-size: 1.1rem;
+}
+.body-button:hover{
+    height: 210%;
+    width: 105%;
+    font-size: 1.3rem;
+    box-shadow: 0 0 0 .1rem #95ac83, 0 0 0 .1rem #95ac83;
+}
 
 
 @media only screen and (min-width: 660px) {
@@ -97,7 +184,9 @@
     }
 
     .nav-logo {
+      
         width: 50%;
+      
     }
 
     .increase-height {
@@ -117,12 +206,34 @@
         align-items: center;
     }
 
+    .main-body {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .body-left {
+        visibility: visible;
+        height: 100%;
+        width: 50%;
+
+    }
+
+    .body-right {
+        width: 50%;
+    }
+
+    .body-buttons {
+        flex-direction: row;
+        align-items: flex-start;
+    }
 }
+
+
 
 .main-body{
     height: auto;
     width: 100%;
-    background-color: violet;
+    /* background-color: violet; */
 
     display: flex;
     flex-direction: row;
@@ -131,8 +242,150 @@
     justify-content: center;
 }
 .recipeCard{
-    height: 15rem;
-    width: 15rem;
-    background-color: bisque;
+    height: auto;
+    width: 40%;
+    background-color: #f0f0f0;
+    border-radius: .5rem;
     margin: 1rem;
+    box-sizing: border-box;
+    box-shadow: .5rem .5rem #95ac83;
+
+    display: flex;
+    flex-direction: column;
+}
+.box1{
+    width: 100%;
+    max-height: 30vh;
+    /* height: 40%; */
+    /* background-color: yellow; */
+    position: relative;
+}
+.box2{
+    width: 100%;
+    box-sizing: border-box;
+    padding: .5rem;
+    /* background-color: red; */
+}
+.box3{
+    width: 100%;
+    padding: 0 .5rem;
+    box-sizing: border-box;
+    /* background-color: green; */
+    /* overflow: scroll; */
+}
+.recipe-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+.recipe-name{
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    top: 60%;
+    margin: 0;
+    color: white;
+    box-sizing: border-box;
+    font-family: unit-slab,Georgia,Times,serif;
+    font-size: 1.5rem;
+    padding: 0 .5rem;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+
+}
+.recipe-desc{
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    top: 80%;
+    background-color: rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    color: white;
+    padding: 0 .5rem;
+}
+
+h3{
+    margin: 0 0 .3rem 0;
+    
+}
+.recipe-ingredients{
+    margin: 0;
+    line-height: 1.6875rem;
+    font-family: corporate-s,Helvetica Neue,Helvetica,Arial,sans-serif;
+
+}
+
+.recipe-steps{
+    margin:0;
+    line-height: 1.6875rem;
+    font-family: corporate-s,Helvetica Neue,Helvetica,Arial,sans-serif;
+
+}
+.recipe-buttons{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.modal{
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-container{
+    height: 20rem;
+    width: 20rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-recipes-edit-modal{
+    visibility: visible;
+}
+.modify, .delete{
+    height: 3rem;
+    width: 9rem;
+    background-color: white;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+}
+.modify:hover, .delete:hover {
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+  }
+
+  .edit-form{
+    background-color: #bfccb5;
+    width: 40vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-element{
+    width: 80%;
+    padding: .3rem ;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.form-element-button{
+    width: 80%;
+    margin: .6rem 0 0 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
 }

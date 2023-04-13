@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Swaad</title>
+    <title>Swaad Recipe</title>
     <link rel="stylesheet" href="/stylesheets/recipes.css">
 </head>
 
@@ -13,7 +13,7 @@
                 <%}%>
             ">
             <div class="nav-logo">
-                <div class="logo">Swaad</div>
+                <div class="logo">Swaad Recipe</div>
                 <form class="nav-routes" action="/recipes" method="post">
                     <button class="route-button">
                         <img class="hamburger" src="/Images/hamburger.png" alt="">
@@ -46,22 +46,23 @@
             
                 <% for(let key of recipeObj){ %>
                     <div class="recipeCard">
-                        <div class="recipe-image">
-                            <img src="./uploads/<%=key.img%>" alt="image">
+                        <div class="box1">
+                            <img class = "recipe-image" src="./uploads/<%=key.img%>" alt="image">
+                            <p class="recipe-name"><%= key.name %></p>
+                            <p class="recipe-desc"><%= key.description %></p>
+                            <!-- Image + Name + Description  -->
                         </div>
-                        <div class="recipe-name">
-                            <%= key.name %>
+                        <div class="box2">
+                            <h3>Ingredients</h3>
+                            <p class="recipe-ingredients"><%= key.ingredients %></p>
                         </div>
-                        <div class="recipe-description">
-                            <%= key.description %>
-                        </div>
-                        <div class="recipe-ingredients">
-                            <%= key.ingredients %>
-                        </div>
-                        <div class="recipe-steps">
+                        <div class="box3">
+                            <h3>Steps </h3>
+                            <p class="recipe-steps">
                             <%= key.steps %>
+                            </p>
                         </div>
-                        <form action="/<%=key._id%>/edit" method="post">
+                        <form class="recipe-buttons" action="/<%=key._id%>/edit" method="post">
 
                             <button class="modify">Modify</button>
                             <button class="delete" type="submit" formaction="/<%=key._id%>/delete" method="post">Delete</button>
@@ -73,18 +74,29 @@
             
         </div>
     </div>
-    <div class="modal">
+    <div class="modal
+    <% if(recipeEditModal == true) { %>
+        show-recipes-edit-modal 
+        <%}%>
+    ">
         <div class="modal-container">
-            <form action="/edit" method="post">
-                <label for="">Name</label>
-                <input type="text" name="name">
-                <label for="">ingredients</label>
-                <input type="text" name="ingredients">
-                <button>Modify</button>
-                <button type="submit" formaction="/recipes" method="post">Cancel</button>
+            <form action="/edit" method="post" class="edit-form">
+                <label class="form-element" for="">Name</label>
+                <input class="form-element" type="text" name="recipeName" >
+                <label class="form-element" for="">Description</label>
+                <input class="form-element" type="text" name="description">
+                <label class="form-element" for="">Ingredients</label>
+                <input class="form-element" type="text" name="ingredients">
+                <label class="form-element" for="">Steps</label>
+                <textarea class="form-element" name="steps" ></textarea>
+                <!-- <label  class="form-element" for="">Upload Image</label>
+                <input  class="form-element" type="file" accept="image/*" name="recipeImage"> -->
+                <button class="form-element-button"  type="submit" >Modify</button>
+                <button class="form-element-button" type="submit" formaction="/recipes" method="post">Cancel</button>
             </form>
         </div>
     </div>
+     
 </body>
 
 </html>

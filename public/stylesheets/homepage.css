@@ -1,8 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+.main{
+    background-color: BFCCB5;
+}
 .nav-container {
     height: 10vh;
-    width: 100vw;
+    width: 95vw;
 
-
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
@@ -14,14 +20,20 @@
 .nav-logo {
     height: 10vh;
     width: 100%;
-
     display: flex;
 }
 
 .logo {
+    box-sizing: border-box;
     height: 100%;
     width: 80%;
-
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 2rem;
+    font-size: 2.4rem;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: 393646;
 }
 
 .nav-routes {
@@ -33,6 +45,12 @@
 .route-button {
     height: 100%;
     width: 100%;
+    background-color: BFCCB5;
+    border: none;
+    font-size: 1.2rem;
+}
+.route-button:hover{
+    font-size: 1.5rem;
 }
 
 .hamburger {
@@ -73,31 +91,48 @@
 
 .body-left {
     visibility: hidden;
+    width: 50%;
+    height: 100%;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 10%;
+    object-fit: cover;
 }
 
 .body-right {
     height: 100%;
-    width: 100%;
+    width: 95%;
 
 
 }
 
 .body-text {
-    height: 50%;
-    width: 100%;
-
+    height: 70%;
+    width: 90%;
+    box-sizing: border-box;
+    padding: 2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.1rem;
+    line-height: 2rem;
 
 }
 
 .body-buttons {
-    height: 50%;
-    width: 100%;
+    height: 30%;
+    width: 96%;
 
-
+    box-sizing: border-box;
+    padding: 2rem;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 
 .explore-recipes,
 .create-recipes {
@@ -107,9 +142,20 @@
 }
 
 .body-button {
-    height: 100%;
+    height: 200%;
     width: 100%;
+    border-radius: 2%;
+    background-color:#e4eae1;
+    border: none;
+    font-size: 1.1rem;
 }
+.body-button:hover{
+    height: 210%;
+    width: 105%;
+    font-size: 1.3rem;
+    box-shadow: 0 0 0 .1rem #95ac83, 0 0 0 .1rem #95ac83;
+}
+
 
 @media only screen and (min-width: 660px) {
     .nav-container {
@@ -138,7 +184,9 @@
     }
 
     .nav-logo {
+      
         width: 50%;
+      
     }
 
     .increase-height {
@@ -177,7 +225,6 @@
     .body-buttons {
         flex-direction: row;
         align-items: flex-start;
-        padding-top: 10%;
     }
 }
 
@@ -201,9 +248,16 @@
     visibility: visible;
 }
 .recipeForm{
-    background-color: aqua;
+    background-color: #bfccb5;
     width: 40vw;
     height: 60vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-element{
+    width: 80%;
+    padding: .3rem ;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

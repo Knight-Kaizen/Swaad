@@ -1,14 +1,11 @@
-.main {
-    height: 10vh;
-    width: 10vw;
-
+.main{
+    background-color: BFCCB5;
 }
-
 .nav-container {
     height: 10vh;
-    width: 100vw;
+    width: 95vw;
 
-  
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
@@ -20,25 +17,37 @@
 .nav-logo {
     height: 10vh;
     width: 100%;
-   
     display: flex;
 }
 
 .logo {
+    box-sizing: border-box;
     height: 100%;
     width: 80%;
-   
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 2rem;
+    font-size: 2.4rem;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: 393646;
 }
 
 .nav-routes {
     height: 100%;
     width: 20%;
- 
+
 }
 
 .route-button {
     height: 100%;
     width: 100%;
+    background-color: BFCCB5;
+    border: none;
+    font-size: 1.2rem;
+}
+.route-button:hover{
+    font-size: 1.5rem;
 }
 
 .hamburger {
@@ -51,7 +60,7 @@
     visibility: hidden;
     height: 15vh;
     width: 100vw;
-   
+
     display: flex;
     flex-direction: column;
 }
@@ -67,7 +76,82 @@
     width: 100%;
 }
 
+.main-body {
+    height: 90vh;
+    width: 100vw;
 
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.body-left {
+    visibility: hidden;
+    width: 50%;
+    height: 100%;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 10%;
+    object-fit: cover;
+}
+
+.body-right {
+    height: 100%;
+    width: 95%;
+
+
+}
+
+.body-text {
+    height: 70%;
+    width: 90%;
+    box-sizing: border-box;
+    padding: 2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.1rem;
+
+
+}
+
+.body-buttons {
+    height: 30%;
+    width: 96%;
+
+    box-sizing: border-box;
+    padding: 2rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.explore-recipes,
+.create-recipes {
+    height: 15%;
+    width: 50%;
+    margin: 3%;
+}
+
+.body-button {
+    height: 200%;
+    width: 100%;
+    border-radius: 2%;
+    background-color:#e4eae1;
+    border: none;
+    font-size: 1.1rem;
+}
+.body-button:hover{
+    height: 210%;
+    width: 105%;
+    font-size: 1.3rem;
+    box-shadow: 0 0 0 .1rem #95ac83, 0 0 0 .1rem #95ac83;
+}
 
 
 @media only screen and (min-width: 660px) {
@@ -97,7 +181,9 @@
     }
 
     .nav-logo {
+      
         width: 50%;
+      
     }
 
     .increase-height {
@@ -117,4 +203,32 @@
         align-items: center;
     }
 
+    .main-body {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .body-left {
+        visibility: visible;
+        height: 100%;
+        width: 50%;
+
+    }
+
+    .body-right {
+        width: 50%;
+    }
+
+    .body-buttons {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+.main-body{
+    width: 90%;
+    box-sizing: border-box;
+    padding: 2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.1rem;
+    line-height: 2rem;
 }

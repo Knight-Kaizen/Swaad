@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Swaad</title>
+    <title>Swaad Recipes</title>
     <link rel="stylesheet" href="/stylesheets/homepage.css">
 </head>
 
@@ -13,7 +13,7 @@
                 <%}%>
             ">
             <div class="nav-logo">
-                <div class="logo">Swaad</div>
+                <div class="logo">Swaad Recipes</div>
                 <form class="nav-routes" action="/home" method="post">
                     <button class="route-button">
                         <img class="hamburger" src="/Images/hamburger.png" alt="">
@@ -43,15 +43,14 @@
             </div>
         </div>
         <div class="main-body">
-            <div class="body-left"></div>
+            <div class="body-left">
+                <img class="image" src="../Images/s-o-c-i-a-l-c-u-t-hwy3W3qFjgM-unsplash.jpg" alt="img">
+            </div>
             <div class="body-right">
                 <div class="body-text">
-                    orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                    publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                    Swaad Recipes is here to help you cook delicious meals with less stress and more joy. We offer recipes and cooking advice for home cooks, by home cooks. Helping create “kitchen wins” is what we’re all about.
+                    <br>
+                    Welcome to Swaad Recipe, a platform dedicated to the love of cooking and sharing recipes! Here, you can find a variety of recipes from talented cooks around the world and also contribute your own recipes to the community. Whether you're a seasoned chef or just starting out in the kitchen, Swaad Recipe is the perfect place to discover new and exciting dishes, learn cooking techniques, and connect with like-minded food enthusiasts. So, come on in and explore the world of delicious cuisine with us!
                 </div>
                 <div class="body-buttons">
                     <form action="/recipes" method="post" class="explore-recipes">
@@ -71,19 +70,18 @@
         <%}%>
     ">
         <form action="/validateForm" method="post" class="recipeForm" enctype="multipart/form-data">
-            <label for="">Name</label>
-            <input type="text" name="recipeName" >
-            <label for="">Description</label>
-            <input type="text" name="description">
-            <label for="">Ingredients</label>
-            <input type="text" name="ingredients">
-            <label for="">Steps</label>
-            <textarea name="steps" ></textarea>
-            <label for="">Upload Image</label>
-            <input type="file" accept="image/*" name="recipeImage">
-            <button class="ipload-image" type="submit" formaction="/uploadImage", method="post">Upload Image</button>
-            <button type="submit" >Create Recipe</button>
-            <button type="submit" formaction="/home?showForm=false" method="post">Close form</button>
+            <label class="form-element" for="">Name</label>
+            <input class="form-element" type="text" name="recipeName" >
+            <label class="form-element" for="">Description</label>
+            <input class="form-element" type="text" name="description">
+            <label class="form-element" for="">Ingredients</label>
+            <input class="form-element" type="text" name="ingredients">
+            <label class="form-element" for="">Steps</label>
+            <textarea class="form-element" name="steps" ></textarea>
+            <label  class="form-element" for="">Upload Image</label>
+            <input  class="form-element" type="file" accept="image/*" name="recipeImage">
+            <button class="form-element"  type="submit" >Create Recipe</button>
+            <button class="form-element"  type="submit" formaction="/home?showForm=false" method="post">Close form</button>
         </form>
     </div>
     
