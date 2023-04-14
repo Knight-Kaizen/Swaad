@@ -9,3 +9,7 @@ connect with like-minded food enthusiasts. So, come on in and explore the world 
 ### Video Link: Link
 ## Screenshots:
 ![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/Homepage.png)
+![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/Recipe%20page1.png)
+![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/Recipe%20page2.png)
+![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/Recipe%20page3.png)
+![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/About%20page.png)
