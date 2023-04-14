@@ -6,7 +6,7 @@ Swaad Recipe is the perfect place to discover new and exciting dishes, learn coo
 connect with like-minded food enthusiasts. So, come on in and explore the world of delicious cuisine with us!
 
 ## Tech Used: NodeJS, Express, MongoDB, and EJS, CSS.
-### Video Link: Link
+### Video Link: [Link](https://youtu.be/wz0Og-ZWhmY)
 ## Screenshots:
 ![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/Homepage.png)
 ![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/Recipe%20page1.png)
