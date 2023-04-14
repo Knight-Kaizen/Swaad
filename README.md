@@ -8,3 +8,4 @@ connect with like-minded food enthusiasts. So, come on in and explore the world 
 ## Tech Used: NodeJS, Express, MongoDB, and EJS, CSS.
 ### Video Link: Link
 ## Screenshots:
+![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/Homepage.png)
