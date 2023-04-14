@@ -13,3 +13,6 @@ connect with like-minded food enthusiasts. So, come on in and explore the world 
 ![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/Recipe%20page2.png)
 ![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/Recipe%20page3.png)
 ![image](https://github.com/Knight-Kaizen/Swaad/blob/main/Screenshots/About%20page.png)
+
+## Installation
+- Run it locally by cloning, installing the packages and then npm run start
