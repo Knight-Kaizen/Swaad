@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 const notifier = require('node-notifier');
 
-const url = "mongodb+srv://kaizen:78R5k1MNqv7FVeea@mydatabase.fkdphrh.mongodb.net/?retryWrites=true&w=majority";
+const url = "mongodb+srv://kaizen:<password>@mydatabase.fkdphrh.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(url, {
     useNewUrlParser: true,
